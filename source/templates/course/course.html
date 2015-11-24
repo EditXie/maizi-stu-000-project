@@ -1,0 +1,64 @@
+{% extends "common/base.html" %}
+{% load staticfiles %}
+{% block title %}课程阶段标题{% endblock %}
+{% block keywords%}课程阶段关键词{% endblock %}
+{% block description%}课程阶段描述{% endblock %}
+{% block container %}
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="#">首页</a></li>
+        <li><a href="/course/">麦子课程</a></li>
+        <li class="active">{{ career_course.name }}</li>
+    </ol>
+</div>
+<div class="container">
+    <div class="course-stage">
+        <div class="course-stage-lead">
+            <dl class="course-stage-dl">
+                  <dt>{{ career_course.name }}</dt>
+                  <dd>{{ career_course.description }}</dd>
+            </dl>
+        <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <ul class="course-data">
+                          <li><i class="v5-icon v5-icon-student"></i></li>
+                          <li>{{ career_course.student_count }}学员</li>
+                    </ul>
+                    <ul class="course-data">
+                          <li><i class="v5-icon v5-icon-time"></i></li>
+                          <li>{{ career_video_length_hour }}小时</li>
+                    </ul>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <ul class="course-btn">
+                  <li><button type="button" class="btn btn-micv5 btn-xlg">体验学习</button></li>
+                  <li><a href="" class="link-default">课程详细介绍</a></li>
+                </ul>
+              </div>
+        </div>
+        </div>
+        {% for stage in stages %}
+        <section>
+            <dl class="course-stage-dl">
+                <dt>{{ stage.name }}</dt>
+                <dd>{{ stage.description }}</dd>
+            </dl>
+            <div class="row course-stage-item">
+            {% for course in stage.courses %}
+                <article class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                    <div class="lead-img"><a href="" title="{{ course.name }}"><img src={% static course.image %}></a></div>
+                    <div class="artc-bt">
+                        <h3><a href="" title="{{ course.name }}">{{ course.name }}</a></h3>
+                        <p><i class="v5-icon v5-icon-stime"></i>{{ course.course_length_hour }}小时{{ course.course_length_minute }}分钟</p>
+                    </div>
+                </article>
+            {% endfor %}
+            </div>
+        </section>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+
+

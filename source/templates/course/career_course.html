@@ -1,0 +1,56 @@
+{% extends "common/base.html" %}
+{% load staticfiles %}
+{% block title %}课程标题{% endblock %}
+{% block keywords%}课程关键词{% endblock %}
+{% block description%}课程描述{% endblock %}
+{% block container %}
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="#">首页</a></li>
+        <li class="active">麦子课程</li>
+    </ol>
+</div>
+<div class="container container-course-list">
+    <ul class="row course-list">
+        {% for course in career_course_list %}
+        <li class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+            <section style="background-color:{{ course.course_color }};">
+                <a href="{{ course.short_name }}">
+                    <img src={% static course.image %}>
+                    <article>
+                        <h3>{{ course.name }}</h3>
+                        <p>{{ course.student_count }}位学员正在学习</p>
+                    </article>
+                </a>
+            </section>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="page-bg-g">
+        <div class="row v5-pages">
+            <div class="col-sm-12 v5-pages-list">
+                <ul class="row fr">
+                    <li>
+                        <a href="{% if career_course_list.has_previous %}?page={{ career_course_list.previous_page_number }}{% endif %}"
+                           class="v5-icon v5-icon-prev">
+                        </a>
+                    </li>
+                    {% for current_page in career_course_list.paginator.page_range %}
+                        <li>
+                            <a href="?page={{ current_page }}"
+                                class="page-num {% ifequal career_course_list.number current_page %}active{% endifequal %}">
+                            {{ current_page }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                    <li>
+                        <a href="{% if career_course_list.has_next %}?page={{ career_course_list.next_page_number }}{% endif %}"
+                           class="v5-icon v5-icon-next">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
