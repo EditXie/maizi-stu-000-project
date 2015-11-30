@@ -1,0 +1,33 @@
+{% load staticfiles %}
+    <div class="page-item">
+    <ul class="row course-list-index">
+      {% for cour in courses %}
+      <li class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+        <a href="">
+          <dl>
+            <dt>
+              <div><img src="{% static 'test/17.jpg' %}"></div>
+            </dt>
+            <dd>
+              <span>{{ cour.name }}</span>
+              <p>{{ cour.student_count }}人正在学习</p>
+            </dd>
+          </dl>
+        </a>
+      </li>
+        {% endfor %}
+    </ul>
+    </div>
+    <div class="page-bg-w">
+    <div class="row v5-pages">
+      <div class="col-sm-12 v5-pages-list">
+        <ul class="row fr">
+          <li><a href="javascript:void (0)" class="v5-icon v5-icon-prev" onclick="index_page_up({% if courses.has_previous %}{{ courses.previous_page_number }}{% endif %})"></a></li>
+          {% for x in courses.paginator.page_range %}
+          <li><a href="javascript:void (0)" onclick="index_page({{ x }})" class="page-num {% ifequal courses.number x %}active{% endifequal %}">{{ x }}</a></li>
+          {% endfor %}
+          <li><a href="javascript:void(0)" class="v5-icon v5-icon-next" onclick="index_page_next({% if courses.has_next %}{{ courses.next_page_number }}{% endif %})"></a></li>
+        </ul>
+      </div>
+    </div>
+    </div>

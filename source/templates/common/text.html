@@ -1,0 +1,15 @@
+        <ul id="foo" class="cf">
+            {% for user in userPiles %}
+                {% if user.is_teacher %}
+                <li>
+                  <dl>
+                    <dt><a href="" style="border-left-color:#00A388;"><img src="/static/ 2015/11/{{ user.avatar_url }}"></a></dt>
+                    <dd>
+                      <h2>{{ user.username }}</h2>
+                      <h3>{{ user.position }}</h3>
+                    </dd>
+                  </dl>
+                </li>
+                {% endif %}
+            {% endfor %}
+        </ul>

@@ -1,3 +1,4 @@
+#coding:utf-8
 """maizi_website URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -15,10 +16,13 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('common.urls', namespace='common')),
     url(r'^course/', include('course.urls', namespace='course')),
     url(r'^users/', include('users.urls', namespace='users')),
+    #媒体文件和静态文件URL路径配置
+    url(r'^uploads/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 ]

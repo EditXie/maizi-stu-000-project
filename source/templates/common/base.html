@@ -13,10 +13,12 @@
 <link href="{% static 'css/microoh-v5.css' %}" rel="stylesheet">
 <link href="{% static 'css/animate.css' %}" rel="stylesheet">
 <link href="{% static 'css/develop.css' %}" rel="stylesheet">
+
 {% block custom_css %}{% endblock %}
 <!--[if lt IE 9]>
 <script src="{% static 'js/html5shiv.min.js' %}"></script>
 <script src="{% static 'js/respond.min.js' %}"></script>
+{#<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>#}
 <![endif]-->
 </head>
 
@@ -263,6 +265,58 @@
 <script src="{% static 'js/microoh-v5.js' %}"></script>
 <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
 <script type="text/javascript">
+ $(function(){
+     $('#new').load('/newBook/');
+ });
+ function active_book(id){
+     if (id==1){
+         $('#new').load('/newBook/');
+     }else if(id==2){
+         $('#new').load('/mostBook/');
+     }else{
+         $('#new').load('/hotBook/');
+     }
+ }
+ function index_page(page_id){
+    $('#new').load('/newBook/',{'page':page_id});
+ }
+ function index_page_next(page_id){
+     if (page_id!=null){
+           $('#new').load('/newBook/',{'page':page_id});
+     }
+ }
+ function index_page_up(page_id){
+     if (page_id!=null){
+          $('#new').load('/newBook/',{'page':page_id});
+     }
+ }
+ function index_page_les(page_id){
+    $('#new').load('/mostBook/',{'page':page_id});
+ }
+ function index_page_next_les(page_id){
+     if (page_id!=null){
+           $('#new').load('/mostBook/',{'page':page_id});
+     }
+ }
+ function index_page_up_les(page_id){
+     if (page_id!=null){
+          $('#new').load('/mostBook/',{'page':page_id});
+     }
+ }
+ function index_page_hot(page_id){
+    $('#new').load('/hotBook/',{'page':page_id});
+ }
+ function index_page_next_hot(page_id){
+     if (page_id!=null){
+           $('#new').load('/hotBook/',{'page':page_id});
+     }
+ }
+ function index_page_up_hot(page_id){
+     if (page_id!=null){
+          $('#new').load('/hotBook/',{'page':page_id});
+     }
+ }
+
 $(function() {
 	//大图切换
 	var carousel = $("#carousel").featureCarousel({

@@ -17,6 +17,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 import sys
 
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # app path settings
@@ -51,7 +52,7 @@ INSTALLED_APPS = (
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+   # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -72,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'common.views.gloado',
             ],
         },
     },
@@ -88,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'maizidb',
         'USER': 'root',
-        'PASSWORD': '1234',
+        'PASSWORD': 'scx1123',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -98,7 +100,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh_cn'
 
 TIME_ZONE = 'UTC'
 
@@ -116,7 +118,10 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,  'static'),
+    os.path.join(BASE_DIR,  'avatar'),
+    os.path.join(BASE_DIR,  'uploads')
 )
+
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
@@ -124,3 +129,7 @@ TEMPLATE_DIRS = (
 
 # define
 AUTH_USER_MODEL = "common.UserProfile"
+
+#媒体地址映射
+MEDIA_URL = '/uploads/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads').replace('\\', '/')

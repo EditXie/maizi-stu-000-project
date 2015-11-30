@@ -11,4 +11,7 @@ from django.conf.urls import patterns, url
 
 urlpatterns = patterns('common.views',
     url(r'^$', 'index', name='index'),
+    url(r'^newBook/$', 'newBook', name='new'),
+    url(r'^mostBook/$', 'mostBook', name='most'),
+    url(r'^hotBook/$', 'hotBook', name='hot'),
 )

@@ -45,6 +45,7 @@ class UserProfileAdmin(UserAdmin):
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
         ('Important dates', {'fields': ('last_login',)}),
+        ('Photoshop', {'fields': ('avatar_url','position')}),
     )
     add_fieldsets = (
         (None, {

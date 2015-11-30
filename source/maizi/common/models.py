@@ -19,7 +19,6 @@ class Ad(models.Model):
     '''
     首页广告
     '''
-
     title = models.CharField(u'广告标题', max_length=50)
     description = models.CharField(u'广告描述', max_length=200)
     # 日期存放路径ad/年/月
